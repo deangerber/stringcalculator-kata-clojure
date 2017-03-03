@@ -2,6 +2,5 @@
   (:require [clojure.test :refer :all]
             [stringcalculator.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest strincalculator-test
+  (is (= 0 (add "")) "should return 0 when given ''"))
