@@ -5,7 +5,7 @@
 
 (defn- string->vector
   [[d s]]
-  (str/split s (re-pattern d)))
+  (str/split (reduce #(str/replace %1 %2 "\000") s (re-seq #"(?<=\[)[^\]]+|(?<=//)[^\[]" d)) #"\000"))
 
 (defn- sum
   [v]
@@ -19,5 +19,5 @@
   [s]
   (cond
     (str/blank? s) 0
-    (str/starts-with? s "//") (sum (string->vector [(subs (first (str/split-lines s)) 2) (second (str/split-lines s))]))
-    :else (sum (string->vector [",|\n" s]))))
+    (str/starts-with? s "//") (sum (string->vector (str/split-lines s)))
+    :else (sum (string->vector ["[,][\n]" s]))))
