@@ -1,11 +1,12 @@
 (ns stringcalculator.core
   (:require [clojure.string :as str]))
 
+(def ^:const delimeter #"(?<=\[)[^\]]+|(?<=//)[^\[]")
 (def string->integer #(Integer/parseInt %))
 
 (defn- string->vector
   [[d s]]
-  (str/split (reduce #(str/replace %1 %2 "\000") s (re-seq #"(?<=\[)[^\]]+|(?<=//)[^\[]" d)) #"\000"))
+  (str/split (reduce #(str/replace %1 %2 "\000") s (re-seq delimeter d)) #"\000"))
 
 (defn- sum
   [v]
