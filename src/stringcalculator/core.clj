@@ -7,7 +7,7 @@
 
 (defn- sum
   [v]
-  (let [numbers (map #(Integer/parseInt %) v)
+  (let [numbers (filter #(<= % 1000) (map #(Integer/parseInt %) v))
         negative-numbers (filterv neg? numbers)]
     (if (empty? negative-numbers)
       (reduce + 0 numbers)
