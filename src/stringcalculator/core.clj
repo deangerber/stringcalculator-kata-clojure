@@ -1,13 +1,15 @@
 (ns stringcalculator.core
   (:require [clojure.string :as str]))
 
+(def string->integer #(Integer/parseInt %))
+
 (defn- string->vector
   [[d s]]
   (str/split s (re-pattern d)))
 
 (defn- sum
   [v]
-  (let [numbers (filter #(<= % 1000) (map #(Integer/parseInt %) v))
+  (let [numbers (filter #(<= % 1000) (map string->integer v))
         negative-numbers (filterv neg? numbers)]
     (if (empty? negative-numbers)
       (reduce + 0 numbers)
