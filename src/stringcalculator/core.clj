@@ -1,7 +1,8 @@
-(ns stringcalculator.core)
+(ns stringcalculator.core
+  (:require [clojure.string :as str]))
 
 (defn add
   [s]
   (if (= s "")
     0
-    (Integer/parseInt s)))
+    (reduce + 0 (map #(Integer/parseInt %) (str/split s #",")))))
