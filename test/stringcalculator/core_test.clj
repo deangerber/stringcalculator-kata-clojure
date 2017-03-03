@@ -11,4 +11,5 @@
   (is (= 3 (add "//;\n1;2")) "should return 3 when given '//;\\n1;2'")
   (is (thrown-with-msg? Exception #"negatives not allowed: \[-2 -4\]" (add "//;\n1;-2;3;-4")) "should throw exception when given '//;\\n1;-2;3;-4'")
   (is (= 2 (add "//;\n2;1001")) "should return 2 when given '//;\\n2;1001'")
-  (is (= 6 (add "//[***]\n1***2***3")) "should return 6 given '//[***]\\n1***2***3'"))
+  (is (= 6 (add "//[***]\n1***2***3")) "should return 6 given '//[***]\\n1***2***3'")
+  (is (= 6 (add "//[*][%]\n1*2%3")) "should return 6 given '//[*][%]\\n1*2%3'"))
