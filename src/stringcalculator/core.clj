@@ -3,11 +3,15 @@
 
 (defn- string->vector
   [[d s]]
-  (map #(Integer/parseInt %) (str/split s (re-pattern d))))
+  (str/split s (re-pattern d)))
 
 (defn- sum
   [v]
-  (reduce + 0 v))
+  (let [numbers (map #(Integer/parseInt %) v)
+        negative-numbers (filterv neg? numbers)]
+    (if (empty? negative-numbers)
+      (reduce + 0 numbers)
+      (throw (Exception. (str "negatives not allowed: " negative-numbers))))))
 
 (defn add
   [s]
