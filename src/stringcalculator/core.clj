@@ -5,4 +5,4 @@
   [s]
   (if (= s "")
     0
-    (reduce + 0 (map #(Integer/parseInt %) (str/split s #",")))))
+    (reduce + 0 (map #(Integer/parseInt %) (str/split s #",|\n")))))
