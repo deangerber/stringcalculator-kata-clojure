@@ -2,4 +2,6 @@
 
 (defn add
   [s]
-  0)
+  (if (= s "")
+    0
+    (Integer/parseInt s)))
